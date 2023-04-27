@@ -11,6 +11,8 @@ galleryContainer.addEventListener("click", function (onGalleryContainerClick) {
     // заборонити перехід на іншу сторінку
 onGalleryContainerClick.preventDefault();  
 }
+ 
+    
     
 
 )
@@ -37,13 +39,20 @@ function onGalleryContainerClick(evt) {
     return;
     }
     console.log(evt.target)
+// const datasetSource = e.target.dataset.source;
+//   if (!datasetSource) return;
+//   instance.element().querySelector('img').src = datasetSource;
+//  instance.show();
 }
 
 const instance = basicLightbox.create (`
-    <img src="https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg" width="1280" height="600">
+    <img width="https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg">`
 
-
-`)
-
+)
 instance.show()
+
+
+
+
+ 
 
