@@ -7,15 +7,9 @@ const imgMarcup = createGalleryItems(galleryItems)
 
 galleryContainer.insertAdjacentHTML('beforeend', imgMarcup)
 // Реалізація делегування на ul.gallery
-galleryContainer.addEventListener("click", function (onGalleryContainerClick) {
-    // заборонити перехід на іншу сторінку
-onGalleryContainerClick.preventDefault();  
-}
- 
-    
+galleryContainer.addEventListener("click", onGalleryContainerClick) 
     
 
-)
 function createGalleryItems(galleryItems) {
     return galleryItems
     .map(({ preview, original, description }) => {
@@ -34,13 +28,16 @@ function createGalleryItems(galleryItems) {
 }
 
 function onGalleryContainerClick(evt) {
+    // забороняємо перехід на іншу сторінку
+    evt.preventDefault(); 
     console.log(evt.target) 
-    if (!evt.target.classList.contains("gallery__link")) {
+    if (!evt.target.classList.contains("gallery__image")) {
     return;
     }
     console.log(evt.target)
+    const currentImgUrl = evt.target.dataset.source;
     const instance = basicLightbox.create (`
-    <img width="https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg" width="1280" height="600">
+    <img src="${currentImgUrl}" width="1280" height="600">
     `)
 instance.show()
 
